@@ -1,0 +1,14 @@
+:root{
+  --bg:#f4ece1; --surface:#ebdfd0; --card:#f9f3ea; --ink:#2f2118; --muted:#7a675a;
+  --line:#e0d3c3; --brand:#4a2f22; --brand-ink:#f9f3ea;
+  --serif:'Newsreader',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+  --r-sm:8px; --r-md:14px; --r-pill:999px; --wrap:1120px;
+}
+
+:root{color-scheme:light}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#17110d; --surface:#241a14; --card:#1e1611; --ink:#f1e6d8; --muted:#a99887;
+  --line:#38291f; --brand:#e8d6bd; --brand-ink:#1d140f;
+}
+:root[lang="ar"]{--serif:'Noto Naskh Arabic',Georgia,serif;--sans:'IBM Plex Sans Arabic','Inter',system-ui,sans-serif}
