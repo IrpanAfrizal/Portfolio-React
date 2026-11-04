@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { LANGS, usePrefs } from '../context/Preferences'
 import '../styles/language.css'
 
 /**
- * Pemilih bahasa gaya "icon bar":
- * - Awalnya hanya bendera bahasa yang aktif.
- * - Klik bendera: namanya keluar di samping bendera, dan bendera bahasa lain ikut muncul.
- * - Arahkan kursor ke bendera lain: namanya keluar. Klik: ganti bahasa, lalu kembali ke satu bendera.
- * - Escape atau klik di luar menutupnya.
+ * Pemilih bahasa gaya IconBar / toolbar:
+ * - Semua bendera selalu tampil sejajar.
+ * - Bahasa aktif otomatis melebarkan label namanya.
+ * - Hover / fokus pada bendera lain → labelnya ikut melebar sebentar (preview).
+ * - Klik bendera → ganti bahasa aktif.
  */
 const FLAGS = {
   en: (
@@ -40,52 +40,32 @@ const Flag = ({ code }) => (
 
 export default function LanguageSwitcher() {
   const { lang, setLang, t } = usePrefs()
-  const [open, setOpen] = useState(false)
   const [hover, setHover] = useState(null)
-  const rootRef = useRef(null)
-
-  useEffect(() => {
-    if (!open) return
-    const onKey = e => { if (e.key === 'Escape') { setOpen(false); setHover(null) } }
-    const onDown = e => { if (!rootRef.current?.contains(e.target)) { setOpen(false); setHover(null) } }
-    document.addEventListener('keydown', onKey)
-    document.addEventListener('pointerdown', onDown)
-    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', onDown) }
-  }, [open])
-
   const names = Object.fromEntries(LANGS)
-  const order = [lang, ...LANGS.map(l => l[0]).filter(c => c !== lang)] // bahasa aktif selalu paling depan
 
   return (
-    <div ref={rootRef} className={'lang' + (open ? ' open' : '')} role="group" aria-label={t('settings.language')}>
-      {order.map(code => {
-        const current = code === lang
-        const show = current || open
-        const expanded = open && (current || hover === code)
+    <div className="lang" role="toolbar" aria-orientation="horizontal" aria-label={t('settings.language')}>
+      {LANGS.map(([code]) => {
+        const isSelected = code === lang
+        const expanded = isSelected || hover === code
         return (
-          <div key={code} className={'lg-slot' + (show ? ' show' : '')}>
-            <div className="lg-clip">
-              <button
-                type="button"
-                lang={code}
-                className={'lg-btn' + (current ? ' current' : '') + (expanded ? ' expanded' : '')}
-                aria-label={names[code]}
-                aria-pressed={current}
-                aria-expanded={current ? open : undefined}
-                onClick={() => {
-                  if (current) { setOpen(o => !o); return }
-                  setLang(code); setOpen(false); setHover(null)
-                }}
-                onMouseEnter={() => { if (open) setHover(code) }}
-                onMouseLeave={() => setHover(null)}
-                onFocus={e => { if (open && e.currentTarget.matches(':focus-visible')) setHover(code) }}
-                onBlur={() => setHover(null)}
-              >
-                <span className="lg-flag"><Flag code={code} /></span>
-                <span className="lg-label"><span>{names[code]}</span></span>
-              </button>
-            </div>
-          </div>
+          <button
+            key={code}
+            type="button"
+            lang={code}
+            className={'lg-btn' + (isSelected ? ' current' : '') + (expanded ? ' expanded' : '')}
+            aria-label={names[code]}
+            aria-pressed={isSelected}
+            aria-expanded={expanded}
+            onClick={() => setLang(code)}
+            onMouseEnter={() => setHover(code)}
+            onMouseLeave={() => setHover(null)}
+            onFocus={e => { if (e.currentTarget.matches(':focus-visible')) setHover(code) }}
+            onBlur={() => setHover(null)}
+          >
+            <span className="lg-flag"><Flag code={code} /></span>
+            <span className="lg-label"><span>{names[code]}</span></span>
+          </button>
         )
       })}
     </div>
