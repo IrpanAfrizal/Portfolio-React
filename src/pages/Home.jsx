@@ -4,12 +4,14 @@ import Icon from '../components/Icon'
 import SectionHeading from '../components/SectionHeading'
 import { projects } from '../data/projects'
 import { usePrefs } from '../context/Preferences'
+
 export default function Home() {
   const { t, theme } = usePrefs()
   const featured = projects.filter(p => p.featured)
   const folderFiles = p => [
     { name: t('home.folder.details'), meta: p.year || t('projects.types.' + p.category), to: `/projects/${p.slug}` },
     ...(p.github ? [{ name: 'GitHub', meta: t('home.folder.source'), href: p.github }] : []),
+    ...(p.gitlab ? [{ name: 'GitLab', meta: t('home.folder.source'), href: p.gitlab }] : []),
     { name: p.stack.slice(0, 3).join(' · '), meta: t('home.folder.stack') },
   ]
   const folderMeta = p => {
@@ -41,7 +43,7 @@ export default function Home() {
         <div className="folders">
           {featured.map((p, i) => (
             <GlassFolder key={p.slug} label={p.title} meta={folderMeta(p)} tone={theme === 'dark' ? 'dark' : 'light'}
-              art={p.art} image={p.image} width={300} appearDelay={i * 140} files={folderFiles(p)} labels={{ open: t('home.folder.open'), close: t('home.folder.close'), contents: t('home.folder.contents') }} />
+              icon={p.icon} image={p.image} width={300} appearDelay={i * 140} files={folderFiles(p)} labels={{ open: t('home.folder.open'), close: t('home.folder.close'), contents: t('home.folder.contents') }} />
           ))}
         </div>
       </section>
