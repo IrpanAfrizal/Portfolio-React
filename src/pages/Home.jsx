@@ -1,6 +1,7 @@
 import Button from '../components/Button'
 import GlassFolder from '../components/GlassFolder'
 import Icon from '../components/Icon'
+import PageFX from '../components/PageFX'
 import SectionHeading from '../components/SectionHeading'
 import { projects } from '../data/projects'
 import { usePrefs } from '../context/Preferences'
@@ -21,7 +22,8 @@ export default function Home() {
   }
   return (
     <>
-      <section className="wrap hero">
+      <section className="wrap hero fx">
+        <PageFX variant="hero" />
         <div>
           <p className="tag">{t('hero.role')}</p>
           <h1>Irpan Afrizal<br />Putra Eriani</h1>
@@ -38,7 +40,8 @@ export default function Home() {
           <q>{t('hero.quote')}</q>
         </div>
       </section>
-      <section className="wrap section">
+      <section className="wrap section fx">
+        <PageFX variant="left" />
         <SectionHeading index="01 / 07" title={t('home.title')} sub={t('home.sub')} as="h3" />
         <div className="folders">
           {featured.map((p, i) => (

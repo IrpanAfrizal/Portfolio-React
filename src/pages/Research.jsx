@@ -1,5 +1,6 @@
 import Button from '../components/Button'
 import Icon from '../components/Icon'
+import PageFX from '../components/PageFX'
 import SectionHeading from '../components/SectionHeading'
 import { research } from '../data/experience'
 import { usePrefs } from '../context/Preferences'
@@ -7,7 +8,8 @@ export default function Research() {
   const { t } = usePrefs()
   const external = research.link !== '#' ? { target: '_blank', rel: 'noopener noreferrer' } : {}
   return (
-    <div className="wrap section">
+    <div className="wrap section fx">
+      <PageFX />
       <SectionHeading index="05 / 07" title={t('research.title')} sub={t('research.sub')} as="h1" />
       <article className="card paper">
         <div className="paper-img">

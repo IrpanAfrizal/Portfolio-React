@@ -1,9 +1,11 @@
+import PageFX from '../components/PageFX'
 import SectionHeading from '../components/SectionHeading'
 import { usePrefs } from '../context/Preferences'
 export default function About() {
   const { t } = usePrefs()
   return (
-    <div className="wrap">
+    <div className="wrap fx">
+      <PageFX variant="left" />
       <section className="section split">
         <div>
           <SectionHeading index="02 / 07" title={t('about.title')} sub={t('about.sub')} as="h1" />
