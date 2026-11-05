@@ -1,4 +1,5 @@
 import Icon from '../components/Icon'
+import PageFX from '../components/PageFX'
 import { EXPERIMENTS, TEXT } from '../data/experiments'
 import { usePrefs } from '../context/Preferences'
 import '../styles/experiments.css'
@@ -7,10 +8,9 @@ export default function Experiments() {
   const { lang } = usePrefs()
   const L = TEXT[lang] || TEXT.en
   return (
-    <div className="wrap ex">
+    <div className="wrap ex fx">
+      <PageFX />
       <header className="ex-head">
-        <span className="ex-arc" aria-hidden="true" />
-        <span className="ex-star" aria-hidden="true"><Icon name="sparkle" size={38} /></span>
         <p className="ex-index">06 / 07</p>
         <h1>{L.title}</h1>
         <p className="ex-sub">{L.sub}</p>

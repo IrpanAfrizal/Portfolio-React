@@ -18,7 +18,7 @@ export default function About() {
           </div>
         </div>
         <div className="portrait" style={{ borderRadius: 'var(--r-md)' }}>
-          <img src="/images/profile.JPG" alt="" onError={e => (e.currentTarget.style.display = 'none')} />
+          <img src="/images/about.jpg" alt="" onError={e => (e.currentTarget.style.display = 'none')} />
           <q>{t('about.quote')}</q>
         </div>
       </section>

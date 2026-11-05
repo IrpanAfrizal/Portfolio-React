@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import Button from '../components/Button'
 import Icon from '../components/Icon'
+import PageFX from '../components/PageFX'
 import { skillGroups } from '../data/skills'
 import { usePrefs } from '../context/Preferences'
 import '../styles/skills.css'
@@ -21,7 +22,8 @@ export default function Expertise() {
   }
 
   return (
-    <div className="wrap sk">
+    <div className="wrap sk fx">
+      <PageFX />
       <section className="sk-hero">
         <div className="sk-intro">
           <p className="sk-index">03 / 07 <span aria-hidden="true" /></p>

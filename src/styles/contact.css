@@ -1,14 +1,5 @@
 /* ===== halaman Contact ===== */
 .ct{--ct-spring:cubic-bezier(.34,1.56,.5,1);--ct-ease:cubic-bezier(.2,.7,.2,1);position:relative}
-.ct>*:not(.ct-deco){position:relative;z-index:1}
-
-/* hiasan latar: lingkaran bernapas + bintang melayang */
-.ct-deco{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-.ct-arc{position:absolute;inset-inline-end:-180px;top:-140px;width:560px;height:560px;border-radius:50%;border:1px solid color-mix(in srgb,var(--ink) 13%,transparent);animation:ct-breathe 7s ease-in-out infinite}
-.ct-arc2{inset-inline-end:-100px;top:-60px;width:400px;height:400px;animation-delay:-3.5s}
-.ct-star{position:absolute;inset-inline-end:12%;top:90px;color:var(--brand);animation:ct-float 5s ease-in-out infinite}
-@keyframes ct-breathe{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.06);opacity:.55}}
-@keyframes ct-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-14px) rotate(25deg)}}
 
 /* tata letak */
 .ct-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,480px);gap:clamp(28px,4.5vw,64px);align-items:start;margin-top:8px}
@@ -129,7 +120,6 @@
 
 @media (max-width:900px){
   .ct-grid{grid-template-columns:1fr}
-  .ct-star{display:none}
 }
 @media (max-width:560px){
   .ct-card{padding:22px;border-radius:22px}

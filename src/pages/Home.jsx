@@ -41,7 +41,7 @@ export default function Home() {
         </div>
       </section>
       <section className="wrap section fx">
-        <PageFX variant="left" />
+        <PageFX variant="left" planes={false} />
         <SectionHeading index="01 / 07" title={t('home.title')} sub={t('home.sub')} as="h3" />
         <div className="folders">
           {featured.map((p, i) => (

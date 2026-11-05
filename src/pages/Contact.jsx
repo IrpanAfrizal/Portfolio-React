@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Button from '../components/Button'
 import Icon from '../components/Icon'
+import PageFX from '../components/PageFX'
 import SectionHeading from '../components/SectionHeading'
 import { usePrefs } from '../context/Preferences'
 import '../styles/contact.css'
@@ -52,12 +53,8 @@ export default function Contact() {
   ]
 
   return (
-    <div className="wrap section ct">
-      <div className="ct-deco" aria-hidden="true">
-        <span className="ct-arc" />
-        <span className="ct-arc ct-arc2" />
-        <span className="ct-star"><Icon name="sparkle" size={34} /></span>
-      </div>
+    <div className="wrap section ct fx">
+      <PageFX />
 
       <SectionHeading index="07 / 07" title={t('contact.title')} sub={t('contact.sub')} as="h1" />
 
