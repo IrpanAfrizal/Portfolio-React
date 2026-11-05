@@ -10,14 +10,14 @@
 .sk-index span{position:relative;width:110px;height:1px;background:currentColor;opacity:.6}
 .sk-index span::after{content:"";position:absolute;inset-inline-end:0;top:-2px;width:5px;height:5px;border-top:1px solid;border-inline-end:1px solid;transform:rotate(45deg)}
 [dir="rtl"] .sk-index span::after{transform:rotate(-135deg)}
-.sk h1{font-size:clamp(46px,6.4vw,86px);line-height:.98;letter-spacing:-.02em;margin-bottom:18px}
-.sk-intro p.muted{max-width:34ch}
+.sk h1{font-size:clamp(40px,4.2vw,72px);line-height:.98;letter-spacing:-.02em;margin-bottom:18px}
+.sk-intro p.muted{max-width:34ch;font-size:16px;line-height:1.7}
 
 .sk-spot{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) clamp(110px,12vw,160px);gap:20px;align-items:center;padding-inline-start:28px;animation:sk-in .5s ease both}
 @keyframes sk-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.sk-num{font:400 clamp(70px,8vw,112px)/1 var(--serif);color:color-mix(in srgb,var(--brand) 24%,var(--bg))}
+.sk-num{font:400 clamp(56px,6.4vw,90px)/1 var(--serif);color:color-mix(in srgb,var(--brand) 24%,var(--bg))}
 .sk-spot-body{max-width:300px;display:grid;gap:12px;justify-items:start}
-.sk-spot-body h2{font-size:clamp(24px,2.6vw,32px)}
+.sk-spot-body h2{font-size:clamp(20px,2vw,24px)}
 .sk-spot-body p{font-size:13px;line-height:1.55}
 .sk-link{display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:0 0 3px;font:500 13px var(--sans);color:var(--ink);background:none;border:0;border-bottom:1px solid var(--ink);cursor:pointer}
 
@@ -75,7 +75,7 @@
 /* banner penutup */
 .sk-banner{display:flex;align-items:center;gap:18px;margin-top:26px;padding:12px 14px;padding-inline-start:22px;border:1px solid var(--line);border-radius:var(--r-pill);background:color-mix(in srgb,var(--surface) 55%,transparent)}
 .sk-banner>svg{flex:none;color:var(--brand)}
-.sk-banner p{font:italic 22px var(--serif);white-space:nowrap}
+.sk-banner p{font:italic 17px var(--serif);white-space:nowrap}
 .sk-banner .sk-line{margin:0}
 [lang="ar"] .sk-banner p{font-style:normal}
 [dir="rtl"] .sk-banner .btn svg{scale:-1 1}
@@ -89,7 +89,7 @@
 @media (max-width:860px){.sk-card.lg,.sk-card.sm{grid-column:1/-1}}
 @media (max-width:560px){
   .sk-spot{grid-template-columns:1fr;gap:8px}
-  .sk-num{font-size:72px}
+  .sk-num{font-size:60px}
   .sk-body{grid-template-columns:1fr;gap:16px}
   .sk-body>div+div{margin-inline-start:0;padding-inline-start:0;padding-top:14px;border-inline-start:0;border-top:1px solid var(--line)}
   .sk-banner{flex-wrap:wrap;border-radius:var(--r-md)}

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Button from '../components/Button'
 import NotchedProjectCard from '../components/NotchedProjectCard'
+import PageFX from '../components/PageFX'
 import SectionHeading from '../components/SectionHeading'
 import { projects, categories } from '../data/projects'
 import { usePrefs } from '../context/Preferences'
@@ -9,7 +10,8 @@ export default function Projects() {
   const [cat, setCat] = useState('all')
   const list = cat === 'all' ? projects : projects.filter(p => p.category === cat)
   return (
-    <div className="wrap section">
+    <div className="wrap section fx">
+      <PageFX />
       <SectionHeading index="04 / 07" title={t('projects.title')} sub={t('projects.sub')} as="h1" />
       <div className="filters" role="group" aria-label={t('projects.filter')}>
         {categories.map(c => <Button plain key={c} aria-pressed={cat === c} onClick={() => setCat(c)}>{t('projects.filters.' + c)}</Button>)}
